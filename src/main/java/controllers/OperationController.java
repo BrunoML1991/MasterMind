@@ -1,14 +1,8 @@
 package controllers;
 
-public interface OperationController {
+public interface OperationController extends PresenterView {
 
 	void accept(OperationControllerVisitor operationControllerVisitor);
-
-	int getTurn();
-
-	char[] boardData(int turn);
-
-	int[] matchesObtained (int turn);
 
 }
 

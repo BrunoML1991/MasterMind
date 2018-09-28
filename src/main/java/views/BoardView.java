@@ -1,13 +1,13 @@
 package views;
 
 import utils.IO;
-import controllers.OperationController;
+import controllers.PresenterView;
 
 public class BoardView {
 
-	private OperationController controller;
+	private PresenterView controller;
 
-	public BoardView(OperationController controller) {
+	public BoardView(PresenterView controller) {
 		assert controller != null;
 		this.controller = controller;
 	}
