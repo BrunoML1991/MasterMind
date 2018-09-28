@@ -1,6 +1,6 @@
 package controllers;
 
-public interface PresenterView {
+public interface PresenterController {
 
     int getTurn();
 
