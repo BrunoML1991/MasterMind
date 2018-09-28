@@ -7,22 +7,20 @@ import models.State;
 
 public class StartControllerLocal extends OperationControllerLocal implements StartController {
 
-	int users;
+	private PutControllerBuilderLocal putControllerBuilderLocal;
 
-	protected StartControllerLocal(Game game) {
+	protected StartControllerLocal(Game game,PutControllerBuilderLocal putControllerBuilderLocal) {
 		super(game);
+		assert putControllerBuilderLocal != null;
+		this.putControllerBuilderLocal = putControllerBuilderLocal;
 	}
 
 	@Override
 	public void start(int users) {
 		assert this.getState() == State.INITIAL;
-		this.users = users;
+		putControllerBuilderLocal.build(users);
 		this.setSecretCode();
 		this.setState(State.IN_GAME);
-	}
-
-	public int getUsers() {// Esto hay que ver si lo usa alguien
-		return users;
 	}
 
 	@Override

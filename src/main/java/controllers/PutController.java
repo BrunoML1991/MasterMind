@@ -10,4 +10,6 @@ public interface PutController extends OperationController {
 
 	char [] createRandomCode();
 
+	CoordinateController getCoordinateController();
+
 }

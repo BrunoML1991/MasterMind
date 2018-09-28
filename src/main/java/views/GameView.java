@@ -3,6 +3,8 @@ package views;
 import controllers.Error;
 import controllers.OperationController;
 import controllers.PutController;
+import controllers.RandomCoordinateController;
+import controllers.UserCoordinateController;
 import models.Board;
 import models.Color;
 import models.Turn;
@@ -11,14 +13,13 @@ import utils.IO;
 public class GameView {
 
     private IO io = new IO();
-    private StartView startView = new StartView ();
 
     public void interact (PutController putController){
-        if (false) {
+        if (putController.getCoordinateController() instanceof UserCoordinateController) {
             io.writeln("Haga su jugada de " + Board.CODE_LENGTH + " letras mayusculas " + Error.NOT_COLOR + ":");
             putController.put(this.readCode());
-        } else {
-            putController.put(putController.createRandomCode());
+        } else if(putController.getCoordinateController() instanceof RandomCoordinateController) {
+            putController.put(putController.getCoordinateController().getCode());
             io.readString("Pulse intro para continuar");
         }
         new BoardView(putController).writeBoard();
@@ -32,7 +33,7 @@ public class GameView {
         }
     }
 
-    public char[] readCode() {
+    private char[] readCode() {
         char[] code;
         do {
             code = io.readString().toCharArray();
@@ -43,7 +44,7 @@ public class GameView {
         return code;
     }
 
-    public boolean checkCode(char letters[]) {
+    private boolean checkCode(char letters[]) {
         assert letters != null;
         boolean ok = true;
         if (letters.length != Board.CODE_LENGTH || !this.isInColor(letters)) {
@@ -52,7 +53,7 @@ public class GameView {
         return ok;
     }
 
-    public boolean isInColor(char letters[]) {
+    private boolean isInColor(char letters[]) {
         assert letters != null;
         boolean ok = false;
         int contador = 0;

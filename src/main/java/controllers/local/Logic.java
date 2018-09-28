@@ -6,13 +6,13 @@ public class Logic {
 
 	private Game game;
 	private StartControllerLocal startController;
-	private PutControllerLocal putController;
+	private PutControllerBuilderLocal putController;
 	private ContinueControllerLocal continueController;
 	
 	public Logic () {
 		game = new Game();
-		startController = new StartControllerLocal(game);
-		putController = new PutControllerLocal(game);
+		putController = new PutControllerBuilderLocal(game);
+		startController = new StartControllerLocal(game,putController);
 		continueController = new ContinueControllerLocal(game);
 	}
 	
@@ -21,7 +21,7 @@ public class Logic {
 		case INITIAL:
 			return startController;
 		case IN_GAME:
-				return putController;
+				return putController.getOperationController();
 		case FINAL:
 			return continueController;
 		case EXIT:
