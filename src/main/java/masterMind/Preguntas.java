@@ -11,5 +11,6 @@ public class Preguntas {
 	 *isVictory en board cambiarla cuando decida donde poner la cantidad máxima de turnos y si se hace con DIMENSION
 	 *Hay que darle otra vuelta a 170 cuando este algo más terminado
 	 *Mirar herencias paralelas para el tema do los put que tiene pinta de que hay que hacerlo de otra manera
+	 * Los putos users me están dando pro culo y el punto anterior va con este. Esto hay que arreglarlo
 	 * */
 }
