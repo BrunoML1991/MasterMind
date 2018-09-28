@@ -2,7 +2,6 @@ package models;
 
 import java.util.HashMap;
 import java.util.Map;
-import utils.IO;
 
 public class Board {
 
@@ -20,19 +19,19 @@ public class Board {
 
 	public int matchColor(int turn) {
 		int match = 0;
-		int SecretCode[] = this.colorsInCode(0);
-		int TurnCode[] = this.colorsInCode(turn);
-		int ColorsAndPositionMatched[] = this.howMuchColorsAndPositionMatched(turn);
+		int[] secretCode = this.colorsInCode(0);
+		int[] turnCode = this.colorsInCode(turn);
+		int[] colorsAndPositionMatched = this.howMuchColorsAndPositionMatched(turn);
 		for (int i = 0; i < Color.values().length; i++) {
-			SecretCode[i] -= ColorsAndPositionMatched[i];
-			TurnCode[i] -= ColorsAndPositionMatched[i];
+			secretCode[i] -= colorsAndPositionMatched[i];
+			turnCode[i] -= colorsAndPositionMatched[i];
 		}
 		for (int i = 0; i < Color.values().length; i++) {
-			if (SecretCode[i] > 0 & TurnCode[i] > 0) {
-				if (SecretCode[i] < TurnCode[i]) {
-					match += SecretCode[i];
+			if (secretCode[i] > 0 && turnCode[i] > 0) {
+				if (secretCode[i] < turnCode[i]) {
+					match += secretCode[i];
 				} else {
-					match += TurnCode[i];
+					match += turnCode[i];
 				}
 			}
 		}
@@ -40,7 +39,7 @@ public class Board {
 	}
 
 	public int[] colorsInCode(int codeId) {
-		int colors[] = new int[Color.values().length];
+		int[] colors = new int[Color.values().length];
 		for (int i = 0; i < Color.values().length; i++) {
 			colors[i] = 0;
 		}
@@ -55,15 +54,15 @@ public class Board {
 	}
 
 	public int[] howMuchColorsAndPositionMatched(int turn) {
-		int match[] = new int[Color.values().length];
-		char SecretCode[] = map.get(0);
-		char TurnCode[] = map.get(turn);
+		int[] match = new int[Color.values().length];
+		char[] secretCode = map.get(0);
+		char[] turnCode = map.get(turn);
 		for (int i = 0; i < Color.values().length; i++) {
 			match[i] = 0;
 		}
 		for (int i = 0; i < map.get(0).length; i++) {
 			for (int j = 0; j < Color.values().length; j++) {
-				if (SecretCode[i] == TurnCode[i] & SecretCode[i] == Color.values()[j].getColor()) {
+				if (secretCode[i] == turnCode[i] && secretCode[i] == Color.values()[j].getColor()) {
 					match[j] += 1;
 				}
 			}
@@ -73,7 +72,7 @@ public class Board {
 
 	public int matchPositionAndColor(int turn) {
 		int match = 0;
-		int matches[] = this.howMuchColorsAndPositionMatched(turn);
+		int[] matches = this.howMuchColorsAndPositionMatched(turn);
 		for (int i = 0; i < Color.values().length; i++) {
 			match += matches[i];
 		}
@@ -89,7 +88,7 @@ public class Board {
 		return ok;
 	}
 
-	public void put(char code[]) {
+	public void put(char[] code) {
 		assert turn != null;
 		map.put(turn.getTurn(), code);
 	}
@@ -99,11 +98,11 @@ public class Board {
 	}
 
 	public char[] createRandomCode() {
-		char SecretCode[] = new char[4];
+		char[] secretCode = new char[4];
 		for (int i = 0; i < Board.CODE_LENGTH; i++) {
-			SecretCode[i] = this.randomLetter();
+			secretCode[i] = this.randomLetter();
 		}
-		return SecretCode;
+		return secretCode;
 	}
 
 	private char randomLetter() {

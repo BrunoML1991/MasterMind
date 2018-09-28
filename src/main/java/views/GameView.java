@@ -33,8 +33,7 @@ public class GameView {
     }
 
     public char[] readCode() {
-        char code[];
-        IO io = new IO();
+        char[] code;
         do {
             code = io.readString().toCharArray();
             if (code.length != Board.CODE_LENGTH || !this.isInColor(code)) {
@@ -71,7 +70,7 @@ public class GameView {
     }
 
     private void victoryOrDefeat(String title, OperationController controller) {
-        new IO().writeln(title);
+        io.writeln(title);
         new BoardView(controller).writeSecretCode();
     }
 
