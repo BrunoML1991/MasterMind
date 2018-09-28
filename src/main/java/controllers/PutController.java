@@ -1,20 +1,13 @@
 package controllers;
 
-import models.Game;
+public interface PutController extends OperationController {
 
-public class PutController extends OperationController {
+	void put (char code []);
 
-	public PutController(Game game) {
-		super(game);
-	}
-	
-	public void put (char code []) {
-		super.put(code);
-	}
+	boolean isVictory ();
 
-	@Override
-	public void accept(OperationControllerVisitor operationControllerVisitor) {
-		operationControllerVisitor.visit(this);
-	}
+	void changeTurn();
+
+	char [] createRandomCode();
 
 }

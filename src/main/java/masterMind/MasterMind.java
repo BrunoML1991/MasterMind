@@ -1,7 +1,7 @@
 package masterMind;
 
-import controllers.OperationController;
-import controllers.Logic;
+import controllers.local.OperationControllerLocal;
+import controllers.local.Logic;
 import views.MasterMindView;
 
 public class MasterMind {
@@ -15,7 +15,7 @@ public class MasterMind {
 	}
 
 	public void play() {
-		OperationController controller;
+		OperationControllerLocal controller;
 		do {
 			controller = logic.getController();
 			if (controller != null) {

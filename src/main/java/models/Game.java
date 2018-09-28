@@ -26,10 +26,6 @@ public class Game {
 	public void setState (State state) {
 		this.state = state;
 	}
-	
-	public Board getBoard () {
-		return board;
-	}
 		
 	public void setSecretCode () {
 		board.setSecretCode();
@@ -51,20 +47,12 @@ public class Game {
 		board.put(code);
 	}
 	
-	public void writeBoard() {
-		board.writeBoard();
-	}
-	
 	public int getTurn () {
 		return turn.getTurn();
 	}
 	
 	public void changeTurn () {
 		turn.changeTurn();
-	}
-	
-	public void writeSecretCode () {
-		board.writeSecretCode();
 	}
 	
 	public boolean isVictory () {
@@ -77,14 +65,6 @@ public class Game {
 	
 	public int getNumPlayers() {
 		return Board.NUM_PLAYERS;
-	}
-	
-	public int getCodeLength() {
-		return Board.CODE_LENGTH;
-	}
-	
-	public int maxTurns () {
-		return Turn.MAX_TURNS;
 	}
 	
 }

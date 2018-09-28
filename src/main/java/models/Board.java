@@ -89,27 +89,6 @@ public class Board {
 		return ok;
 	}
 
-	public void writeBoard() {// este habrá que quitarlo
-		assert turn != null;
-		for (int i = 0; i < turn.getTurn() + 1; i++) {
-			new IO().writeln(i + " " + this.charArrayToString(map.get(i)) + " Muertos: " + this.matchPositionAndColor(i)
-					+ " Heridos: " + this.matchColor(i));
-		}
-	}
-
-	public void writeSecretCode() {// este habrá que quitarlo
-		new IO().writeln(this.charArrayToString(map.get(0)));
-	}
-
-	public String charArrayToString(char array[]) {// habría que quitarlo, esta en boardview
-		assert array != null;
-		String string = "";
-		for (int i = 0; i < array.length; i++) {
-			string += array[i];
-		}
-		return string;
-	}
-
 	public void put(char code[]) {
 		assert turn != null;
 		map.put(turn.getTurn(), code);

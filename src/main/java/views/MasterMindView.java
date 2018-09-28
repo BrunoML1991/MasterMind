@@ -27,7 +27,7 @@ public class MasterMindView implements OperationControllerVisitor{
 	public void visit(StartController startController) {
 		io.write("0. Demo\n1. Partida\n");
 		this.users = new LimitedIntDialog("Opcion?", 0, 1).read();
-		startController.setUsers(users);
+		startController.start(users);
 	}
 
 	@Override
@@ -52,7 +52,7 @@ public class MasterMindView implements OperationControllerVisitor{
 
 	@Override
 	public void visit(ContinueController continueController) {
-		continueController.setContinue(new YesNoDialog("Desea continuar").read());
+		continueController.resume(new YesNoDialog("Desea continuar").read());
 	}
 
 	public char[] readCode() {
@@ -95,7 +95,7 @@ public class MasterMindView implements OperationControllerVisitor{
 
 	private void victoryOrDefeat(String title, OperationController controller) {
 		new IO().writeln(title);
-		controller.writeSecretCode();
+		new BoardView(controller).writeSecretCode();
 	}
 
 }

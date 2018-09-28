@@ -1,13 +1,14 @@
 package controllers;
 
-import models.Game;
+public interface OperationController {
 
-public abstract class OperationController extends Controller{
-	
-	public OperationController(Game game) {
-		super(game);
-	}
-	
-	public abstract void accept (OperationControllerVisitor operationControllerVisitor);
-	
+	void accept(OperationControllerVisitor operationControllerVisitor);
+
+	int getTurn();
+
+	char[] boardData(int turn);
+
+	int[] matchesObtained (int turn);
+
 }
+
