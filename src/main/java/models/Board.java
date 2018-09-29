@@ -94,7 +94,13 @@ public class Board {
 	}
 
 	public void clear() {
-		map = new HashMap<>();
+		char[] clearCode = new char[Board.CODE_LENGTH];
+		for (int i = 0; i < Board.CODE_LENGTH; i++){
+			clearCode[i] = Color.NONE.getColor();
+		}
+		for(int i = 1; i < Turn.MAX_TURNS + 1 ; i++){
+			map.put(i,clearCode);
+		}
 	}
 
 	public char[] createRandomCode() {

@@ -19,6 +19,7 @@ public class StartControllerLocal extends OperationControllerLocal implements St
 	public void start(int users) {
 		assert this.getState() == State.INITIAL;
 		putControllerBuilderLocal.build(users);
+		this.clear();
 		this.setSecretCode();
 		this.setState(State.IN_GAME);
 	}
