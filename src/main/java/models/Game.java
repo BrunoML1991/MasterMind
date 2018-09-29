@@ -13,7 +13,7 @@ public class Game {
 	}
 	
 	public int [] matchesObtained(int turn) {
-		int matches [] = new int[2];
+		int[] matches  = new int[2];
 		matches [0]= board.matchPositionAndColor(turn);
 		matches [1] = board.matchColor(turn);
 		return matches;
@@ -43,7 +43,7 @@ public class Game {
 		turn.setTurn(value);
 	}
 	
-	public void put(char code[]) {
+	public void put(char[] code) {
 		board.put(code);
 	}
 	
@@ -61,10 +61,6 @@ public class Game {
 	
 	public char[] boardData(int turn){
 		return board.boardData(turn);
-	}
-	
-	public int getNumPlayers() {
-		return Board.NUM_PLAYERS;
 	}
 	
 }

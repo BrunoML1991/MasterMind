@@ -15,7 +15,7 @@ public class PutControllerLocal extends OperationControllerLocal implements PutC
 	}
 
 	@Override
-	public void put (char code []) {
+	public void put (char[] code) {
 		super.put(code);
 	}
 

@@ -19,7 +19,7 @@ public class MasterMind {
 		do {
 			controller = logic.getController();
 			if (controller != null) {
-				view.interact(controller);;
+				view.interact(controller);
 			}
 		} while (controller != null);
 

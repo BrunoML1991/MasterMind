@@ -7,11 +7,8 @@ import controllers.CoordinateControllerVisitor;
 
 public class UserCoordinateControllerLocal extends CoordinateControllerLocal implements UserCoordinateController {
 
-    private Game game;
-
     protected UserCoordinateControllerLocal(Game game) {
         super(game);
-        this.game = game;
     }
 
     @Override

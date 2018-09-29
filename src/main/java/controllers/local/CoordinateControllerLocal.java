@@ -9,6 +9,4 @@ public abstract class CoordinateControllerLocal extends Controller implements Co
         super(game);
     }
 
-    public abstract char[] getCode();
-
 }

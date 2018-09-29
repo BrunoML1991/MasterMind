@@ -24,12 +24,12 @@ public class BoardView {
 		new IO().writeln(this.charArrayToString(controller.boardData(0)));
 	}
 
-	public String charArrayToString(char array[]) {
+	public String charArrayToString(char[] array) {
 		assert array != null;
-		String string = "";
+		StringBuilder stringBuilder = new StringBuilder();
 		for (int i = 0; i < array.length; i++) {
-			string += array[i];
+			stringBuilder.append(array[i]);
 		}
-		return string;
+		return stringBuilder.toString();
 	}
 }

@@ -31,7 +31,6 @@ public class GameView implements CoordinateControllerVisitor {
     }
 
     private char[] readCode() {
-        char[] code;
         do {
             code = io.readString().toCharArray();
             if (code.length != Board.CODE_LENGTH || !this.isInColor(code)) {
@@ -41,7 +40,7 @@ public class GameView implements CoordinateControllerVisitor {
         return code;
     }
 
-    private boolean checkCode(char letters[]) {
+    private boolean checkCode(char[] letters) {
         assert letters != null;
         boolean ok = true;
         if (letters.length != Board.CODE_LENGTH || !this.isInColor(letters)) {
@@ -50,7 +49,7 @@ public class GameView implements CoordinateControllerVisitor {
         return ok;
     }
 
-    private boolean isInColor(char letters[]) {
+    private boolean isInColor(char[] letters) {
         assert letters != null;
         boolean ok = false;
         int contador = 0;

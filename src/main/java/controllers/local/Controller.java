@@ -26,10 +26,6 @@ public abstract class Controller {
 		game.setSecretCode();
 	}
 	
-	public char [] createRandomCode () {
-		return game.createRandomeCode();
-	}
-	
 	protected void clear () {
 		game.clear();
 	}
@@ -38,7 +34,7 @@ public abstract class Controller {
 		game.setTurn(value);
 	}
 	
-	protected void put(char code[]) {
+	protected void put(char[] code) {
 		game.put(code);
 		if (this.isVictory()) {
 			this.setState(State.FINAL);
@@ -53,7 +49,7 @@ public abstract class Controller {
 	}
 
 	public void changeTurn () {
-		game.changeTurn();;
+		game.changeTurn();
 	}
 	
 	public boolean isVictory () {
