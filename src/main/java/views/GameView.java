@@ -1,27 +1,24 @@
 package views;
 
-import controllers.Error;
-import controllers.OperationController;
+import controllers.CoordinateControllerVisitor;
 import controllers.PutController;
-import controllers.RandomCoordinateController;
+import controllers.OperationController;
 import controllers.UserCoordinateController;
+import controllers.RandomCoordinateController;
+import controllers.Error;
 import models.Board;
 import models.Color;
 import models.Turn;
 import utils.IO;
 
-public class GameView {
+public class GameView implements CoordinateControllerVisitor {
 
     private IO io = new IO();
+    private char[] code;
 
     public void interact (PutController putController){
-        if (putController.getCoordinateController() instanceof UserCoordinateController) {
-            io.writeln("Haga su jugada de " + Board.CODE_LENGTH + " letras mayusculas " + Error.NOT_COLOR + ":");
-            putController.put(this.readCode());
-        } else if(putController.getCoordinateController() instanceof RandomCoordinateController) {
-            putController.put(putController.getCoordinateController().getCode());
-            io.readString("Pulse intro para continuar");
-        }
+        putController.getCoordinateController().accept(this);
+        putController.put(this.code);
         new BoardView(putController).writeBoard();
         if (putController.isVictory()) {
             this.victoryOrDefeat("Victoria este era el código secreto:", putController);
@@ -75,5 +72,15 @@ public class GameView {
         new BoardView(controller).writeSecretCode();
     }
 
+    @Override
+    public void visit(UserCoordinateController userCoordinateController) {
+        io.writeln("Haga su jugada de " + Board.CODE_LENGTH + " letras mayusculas " + Error.NOT_COLOR + ":");
+        this.code = this.readCode();
+    }
 
+    @Override
+    public void visit(RandomCoordinateController randomCoordinateController) {
+        this.code = randomCoordinateController.getCode();
+        io.readString("Pulse intro para continuar");
+    }
 }

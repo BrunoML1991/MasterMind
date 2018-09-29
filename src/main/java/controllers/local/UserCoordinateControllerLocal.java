@@ -1,7 +1,9 @@
 package controllers.local;
 
 import controllers.UserCoordinateController;
+import models.Board;
 import models.Game;
+import controllers.CoordinateControllerVisitor;
 
 public class UserCoordinateControllerLocal extends CoordinateControllerLocal implements UserCoordinateController {
 
@@ -14,7 +16,11 @@ public class UserCoordinateControllerLocal extends CoordinateControllerLocal imp
 
     @Override
     public char[] getCode(){
-        return game.createRandomeCode();
+        return new char[Board.CODE_LENGTH];
+    }
+
+    public void accept(CoordinateControllerVisitor coordinateControllerVisitor){
+        coordinateControllerVisitor.visit(this);
     }
 
 }

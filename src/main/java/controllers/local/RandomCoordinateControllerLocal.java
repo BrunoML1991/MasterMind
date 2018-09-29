@@ -1,5 +1,6 @@
 package controllers.local;
 
+import controllers.CoordinateControllerVisitor;
 import controllers.RandomCoordinateController;
 import models.Game;
 
@@ -15,6 +16,10 @@ public class RandomCoordinateControllerLocal extends CoordinateControllerLocal i
     @Override
     public char[] getCode(){
         return game.createRandomeCode();
+    }
+
+    public void accept(CoordinateControllerVisitor coordinateControllerVisitor){
+        coordinateControllerVisitor.visit(this);
     }
 
 }
