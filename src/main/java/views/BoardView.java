@@ -14,7 +14,7 @@ public class BoardView {
 	}
 
 	public void writeBoard() {
-		for (int i = 0; i < Turn.MAX_TURNS +1; i++) {
+		for (int i = 1; i < Turn.MAX_TURNS +1; i++) {
 			int [] matches = controller.matchesObtained(i);
 			new IO().writeln(i + " " + this.charArrayToString(controller.boardData(i)) + " Muertos: "
 					+ matches [0] + " Heridos: " + matches [1]);

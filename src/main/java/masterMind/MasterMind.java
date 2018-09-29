@@ -1,21 +1,21 @@
 package masterMind;
 
-import controllers.local.OperationControllerLocal;
-import controllers.local.Logic;
-import views.MasterMindView;
+import controllers.OperationController;
+import controllers.local.LogicLocal;
+import views.ConsoleView;
 
 public class MasterMind {
 
 	private Logic logic;
-	private MasterMindView view;
+	private View view;
 
-	public MasterMind() {
-		logic = new Logic();
-		view = new MasterMindView();
+	public MasterMind(Logic logic, View view) {
+		this.logic = logic;
+		this.view = view;
 	}
 
 	public void play() {
-		OperationControllerLocal controller;
+		OperationController controller;
 		do {
 			controller = logic.getController();
 			if (controller != null) {
@@ -26,7 +26,7 @@ public class MasterMind {
 	}
 
 	public static void main(String[] args) {
-		new MasterMind().play();
+		new MasterMind(new LogicLocal(),new ConsoleView()).play();
 	}
 
 }

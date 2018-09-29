@@ -3,16 +3,16 @@ package views;
 import controllers.StartController;
 import controllers.PutController;
 import controllers.OperationController;
-import controllers.OperationControllerVisitor;
 import controllers.ContinueController;
+import masterMind.View;
 
-public class MasterMindView implements OperationControllerVisitor{
+public class ConsoleView implements View {
 
 	private StartView startView;
 	private GameView gameView;
 	private ContinueView continueView;
 
-	public MasterMindView(){
+	public ConsoleView(){
 		startView = new StartView();
 		gameView = new GameView();
 		continueView = new ContinueView();

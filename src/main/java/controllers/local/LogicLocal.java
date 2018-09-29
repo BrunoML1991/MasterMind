@@ -1,15 +1,16 @@
 package controllers.local;
 
 import models.Game;
+import masterMind.Logic;
 
-public class Logic {
+public class LogicLocal implements Logic{
 
 	private Game game;
 	private StartControllerLocal startController;
 	private PutControllerBuilderLocal putController;
 	private ContinueControllerLocal continueController;
 	
-	public Logic () {
+	public LogicLocal() {
 		game = new Game();
 		putController = new PutControllerBuilderLocal(game);
 		startController = new StartControllerLocal(game,putController);
