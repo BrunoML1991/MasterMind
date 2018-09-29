@@ -1,4 +1,4 @@
-package controllers;
+package controllers.local;
 
 import models.Game;
 import models.State;
@@ -26,10 +26,6 @@ public abstract class Controller {
 		game.setSecretCode();
 	}
 	
-	public char [] createRandomCode () {
-		return game.createRandomeCode();
-	}
-	
 	protected void clear () {
 		game.clear();
 	}
@@ -38,7 +34,7 @@ public abstract class Controller {
 		game.setTurn(value);
 	}
 	
-	protected void put(char code[]) {
+	protected void put(char[] code) {
 		game.put(code);
 		if (this.isVictory()) {
 			this.setState(State.FINAL);
@@ -47,21 +43,13 @@ public abstract class Controller {
 			this.setState(State.FINAL);
 		}
 	}
-	
-	protected void writeBoard() {// este habrá que quitarlo
-		game.writeBoard();
-	}
-	
+
 	public int getTurn () {
 		return game.getTurn();
 	}
-	
+
 	public void changeTurn () {
-		game.changeTurn();;
-	}
-	
-	public void writeSecretCode () {
-		game.writeSecretCode();
+		game.changeTurn();
 	}
 	
 	public boolean isVictory () {
@@ -74,10 +62,6 @@ public abstract class Controller {
 	
 	public char[] boardData(int turn){
 		return game.boardData(turn);
-	}
-	
-	public int getNumPlayers () {
-		return game.getNumPlayers();
 	}
 	
 }

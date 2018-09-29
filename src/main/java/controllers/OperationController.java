@@ -1,13 +1,8 @@
 package controllers;
 
-import models.Game;
+public interface OperationController extends PresenterController {
 
-public abstract class OperationController extends Controller{
-	
-	public OperationController(Game game) {
-		super(game);
-	}
-	
-	public abstract void accept (OperationControllerVisitor operationControllerVisitor);
-	
+	void accept(OperationControllerVisitor operationControllerVisitor);
+
 }
+

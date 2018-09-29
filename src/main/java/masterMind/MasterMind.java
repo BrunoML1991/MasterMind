@@ -1,17 +1,17 @@
 package masterMind;
 
 import controllers.OperationController;
-import controllers.Logic;
-import views.MasterMindView;
+import controllers.local.LogicLocal;
+import views.ConsoleView;
 
 public class MasterMind {
 
 	private Logic logic;
-	private MasterMindView view;
+	private View view;
 
-	public MasterMind() {
-		logic = new Logic();
-		view = new MasterMindView();
+	public MasterMind(Logic logic, View view) {
+		this.logic = logic;
+		this.view = view;
 	}
 
 	public void play() {
@@ -19,14 +19,14 @@ public class MasterMind {
 		do {
 			controller = logic.getController();
 			if (controller != null) {
-				view.interact(controller);;
+				view.interact(controller);
 			}
 		} while (controller != null);
 
 	}
 
 	public static void main(String[] args) {
-		new MasterMind().play();
+		new MasterMind(new LogicLocal(),new ConsoleView()).play();
 	}
 
 }

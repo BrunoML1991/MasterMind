@@ -1,13 +1,13 @@
 package models;
 
 public enum Color {
-	Amarillo('A'),
-	Rojo ('R'),
-	Verde('V'),
-	Azul ('Z'),
-	Blanco ('B'),
-	Negro ('N'),
-	None ('_');
+	AMARILLO('A'),
+	ROJO ('R'),
+	VERDE('V'),
+	AZUL ('Z'),
+	BLANCO ('B'),
+	NEGRO ('N'),
+	NONE ('_');
 	
 	private char value;
 

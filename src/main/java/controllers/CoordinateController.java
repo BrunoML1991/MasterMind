@@ -1,11 +1,9 @@
 package controllers;
 
-import models.Game;
+public interface CoordinateController {
 
-public abstract class CoordinateController extends Controller {
+    char[] getCode();
 
-	protected CoordinateController(Game game) {
-		super(game);
-	}
+    void accept(CoordinateControllerVisitor coordinateControllerVisitor);
 
 }

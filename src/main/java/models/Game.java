@@ -13,7 +13,7 @@ public class Game {
 	}
 	
 	public int [] matchesObtained(int turn) {
-		int matches [] = new int[2];
+		int[] matches  = new int[2];
 		matches [0]= board.matchPositionAndColor(turn);
 		matches [1] = board.matchColor(turn);
 		return matches;
@@ -25,10 +25,6 @@ public class Game {
 	
 	public void setState (State state) {
 		this.state = state;
-	}
-	
-	public Board getBoard () {
-		return board;
 	}
 		
 	public void setSecretCode () {
@@ -47,12 +43,8 @@ public class Game {
 		turn.setTurn(value);
 	}
 	
-	public void put(char code[]) {
+	public void put(char[] code) {
 		board.put(code);
-	}
-	
-	public void writeBoard() {
-		board.writeBoard();
 	}
 	
 	public int getTurn () {
@@ -63,28 +55,12 @@ public class Game {
 		turn.changeTurn();
 	}
 	
-	public void writeSecretCode () {
-		board.writeSecretCode();
-	}
-	
 	public boolean isVictory () {
 		return board.isVictory();
 	}
 	
 	public char[] boardData(int turn){
 		return board.boardData(turn);
-	}
-	
-	public int getNumPlayers() {
-		return Board.NUM_PLAYERS;
-	}
-	
-	public int getCodeLength() {
-		return Board.CODE_LENGTH;
-	}
-	
-	public int maxTurns () {
-		return Turn.MAX_TURNS;
 	}
 	
 }

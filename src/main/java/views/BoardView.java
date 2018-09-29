@@ -1,31 +1,36 @@
 package views;
 
+import models.Turn;
 import utils.IO;
-import controllers.Controller;
+import controllers.PresenterController;
 
 public class BoardView {
 
-	private Controller controller;
+	private PresenterController controller;
 
-	public BoardView(Controller controller) {
+	public BoardView(PresenterController controller) {
 		assert controller != null;
 		this.controller = controller;
 	}
 
-	public void writeBoard() {// este habrá que quitarlo
-		for (int i = 0; i < controller.getTurn()+1; i++) {
+	public void writeBoard() {
+		for (int i = 1; i < Turn.MAX_TURNS +1; i++) {
 			int [] matches = controller.matchesObtained(i);
 			new IO().writeln(i + " " + this.charArrayToString(controller.boardData(i)) + " Muertos: "
 					+ matches [0] + " Heridos: " + matches [1]);
 		}
 	}
 
-	public String charArrayToString(char array[]) {
+	public void writeSecretCode() {
+		new IO().writeln(this.charArrayToString(controller.boardData(0)));
+	}
+
+	public String charArrayToString(char[] array) {
 		assert array != null;
-		String string = "";
+		StringBuilder stringBuilder = new StringBuilder();
 		for (int i = 0; i < array.length; i++) {
-			string += array[i];
+			stringBuilder.append(array[i]);
 		}
-		return string;
+		return stringBuilder.toString();
 	}
 }
